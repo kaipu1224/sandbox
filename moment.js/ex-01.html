@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css"></style>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+        <style>.prettyprint ol.linenums > li { list-style-type: decimal; }</style>  
+    </head>
+    <body>
+<pre class="prettyprint linenums:1"
+>// 公式に載ってたの色々
+// http://momentjs.com/docs/
+// 現在日時
+var d1 = moment().format("YYYY/MM/DD HH:mm:ss");
+console.log("d1=" + d1); // d1=2016/02/02 14:05:58
+
+// 現在日時
+var d2 = moment(new Date()).format("YYYY/MM/DD HH:mm:ss");
+console.log("d2=" + d2); // d2=2016/02/02 14:05:58
+
+// 文字列から
+var d3 = moment("2016-02-01").format("YYYY/MM/DD HH:mm:ss");
+console.log("d3=" + d3); // d3=2016/02/01 00:00:00
+
+// フォーマット指定
+var d4 = moment("2016-02-01", "YYYY-MM-DD").format("YYYY/MM/DD HH:mm:ss");
+console.log("d4=" + d4); // d4=2016/02/01 00:00:00
+
+// フォーマット複数指定もできる
+var d5 = moment("02-01-2016", ["YYYY-MM-DD", "MM-DD-YYYY"]).format("YYYY/MM/DD HH:mm:ss");
+console.log("d5=" + d5); // d5=2016/02/01 00:00:00
+
+// 曜日
+var d6 = moment("2016-02-01").format("YYYY/MM/DD HH:mm:ss ddd");
+console.log("d6=" + d6); // d6=2016/02/01 00:00:00 Mon
+
+// オブジェクトから(月は0スタート)
+var d7 = moment({year:2016, month:1, day:1, hour:10, minute:20, second:30}).format("YYYY/MM/DD HH:mm:ss");
+console.log("d7=" + d7); // d7=2016/02/01 10:20:30
+
+// 配列から[year,month,day,hour,minute,second,millisecond]
+var d8 = moment([2016,1,2,15,30,25,123]).format("YYYY/MM/DD HH:mm:ss SSS");
+console.log("d8=" + d8); // d8=2016/02/02 15:30:25 123
+
+// n日後
+var d9 = moment("2016-02-01").add(5,"d").format("YYYY/MM/DD");
+console.log("d9=" + d9); // d9=2016/02/06
+
+// n日前
+var d10 = moment("2016-02-10").subtract(5,"d").format("YYYY/MM/DD");
+console.log("d10=" + d10); // d10=2016/02/05
+
+// 日付間の日数
+var d11 = moment("2016-02-15").diff(moment("2016-02-10"),"days");
+console.log("d11=" + d11); // d11=5
+
+// 日付間の月数
+var d12 = moment("2016-02-15").diff(moment("2015-11-10"),"month");
+console.log("d12=" + d12); // d12=3
+
+// その月が何日まであるか
+var d13 = moment("2016-02-23").daysInMonth();
+console.log("d13=" + d13); // d13=29
+
+// 配列で返す
+var d14 = moment("2016-02-01 13:38:24").toArray();
+console.log("d14=" + d14); // d14=2016,1,1,13,38,24,0
+
+// JSONで返す
+var d15 = moment("2016-02-01 13:38:24").toJSON();
+console.log("d15=" + d15); // d15=2016-02-01T04:38:24.000Z
+
+// 前の日付かどうか
+var d16 = moment("2016-02-01").isBefore(moment("2016-02-02"));
+console.log("d16=" + d16); // d16=true
+
+// 同じ日付かどうか
+var d17 = moment("2016-02-01").isBefore(moment("2016-02-01"));
+console.log("d17=" + d17); // d17=false
+
+// 後の日付かどうか
+var d18 = moment("2016-02-02").isBefore(moment("2016-02-01"));
+console.log("d18=" + d18); // d18=false
+
+// 日付の間にあるか
+var d19 = moment("2016-02-03").isBetween("2016-02-01", "2016-02-05");
+console.log("d19=" + d19); // d19=true
+
+// うるう年かどうか
+var d20 = moment("2016-02-01").isLeapYear();
+console.log("d20=" + d20); // d20=true
+
+// 月とか曜日とかを和名に
+moment.locale("ja", {
+   months: ["睦月","如月","弥生","卯月","皐月","水無月","文月","葉月","長月","神無月","霜月","師走"],
+   weekdays: ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],
+   weekdaysShort: ["日","月","火","水","木","金","土"],  
+});
+var d21 = moment("2016-02-01").format("MMMM");
+var d22 = moment("2016-02-01").format("dddd");
+var d23 = moment("2016-02-01").format("ddd");
+console.log("d21=" + d21); // d21=如月
+console.log("d22=" + d22); // d22=月曜日
+console.log("d23=" + d23); // d23=月
+</pre>
+
+<script>
+// 公式に載ってたの色々
+// http://momentjs.com/docs/
+// 現在日時
+var d1 = moment().format("YYYY/MM/DD HH:mm:ss");
+console.log("d1=" + d1); // d1=2016/02/02 14:05:58
+
+// 現在日時
+var d2 = moment(new Date()).format("YYYY/MM/DD HH:mm:ss");
+console.log("d2=" + d2); // d2=2016/02/02 14:05:58
+
+// 文字列から
+var d3 = moment("2016-02-01").format("YYYY/MM/DD HH:mm:ss");
+console.log("d3=" + d3); // d3=2016/02/01 00:00:00
+
+// フォーマット指定
+var d4 = moment("2016-02-01", "YYYY-MM-DD").format("YYYY/MM/DD HH:mm:ss");
+console.log("d4=" + d4); // d4=2016/02/01 00:00:00
+
+// フォーマット複数指定もできる
+var d5 = moment("02-01-2016", ["YYYY-MM-DD", "MM-DD-YYYY"]).format("YYYY/MM/DD HH:mm:ss");
+console.log("d5=" + d5); // d5=2016/02/01 00:00:00
+
+// 曜日
+var d6 = moment("2016-02-01").format("YYYY/MM/DD HH:mm:ss ddd");
+console.log("d6=" + d6); // d6=2016/02/01 00:00:00 Mon
+
+// オブジェクトから(月は0スタート)
+var d7 = moment({year:2016, month:1, day:1, hour:10, minute:20, second:30}).format("YYYY/MM/DD HH:mm:ss");
+console.log("d7=" + d7); // d7=2016/02/01 10:20:30
+
+// 配列から[year,month,day,hour,minute,second,millisecond]
+var d8 = moment([2016,1,2,15,30,25,123]).format("YYYY/MM/DD HH:mm:ss SSS");
+console.log("d8=" + d8); // d8=2016/02/02 15:30:25 123
+
+// n日後
+var d9 = moment("2016-02-01").add(5,"d").format("YYYY/MM/DD");
+console.log("d9=" + d9); // d9=2016/02/06
+
+// n日前
+var d10 = moment("2016-02-10").subtract(5,"d").format("YYYY/MM/DD");
+console.log("d10=" + d10); // d10=2016/02/05
+
+// 日付間の日数
+var d11 = moment("2016-02-15").diff(moment("2016-02-10"),"days");
+console.log("d11=" + d11); // d11=5
+
+// 日付間の月数
+var d12 = moment("2016-02-15").diff(moment("2015-11-10"),"month");
+console.log("d12=" + d12); // d12=3
+
+// その月が何日まであるか
+var d13 = moment("2016-02-23").daysInMonth();
+console.log("d13=" + d13); // d13=29
+
+// 配列で返す
+var d14 = moment("2016-02-01 13:38:24").toArray();
+console.log("d14=" + d14); // d14=2016,1,1,13,38,24,0
+
+// JSONで返す
+var d15 = moment("2016-02-01 13:38:24").toJSON();
+console.log("d15=" + d15); // d15=2016-02-01T04:38:24.000Z
+
+// 前の日付かどうか
+var d16 = moment("2016-02-01").isBefore(moment("2016-02-02"));
+console.log("d16=" + d16); // d16=true
+
+// 同じ日付かどうか
+var d17 = moment("2016-02-01").isBefore(moment("2016-02-01"));
+console.log("d17=" + d17); // d17=false
+
+// 後の日付かどうか
+var d18 = moment("2016-02-02").isBefore(moment("2016-02-01"));
+console.log("d18=" + d18); // d18=false
+
+// 日付の間にあるか
+var d19 = moment("2016-02-03").isBetween("2016-02-01", "2016-02-05");
+console.log("d19=" + d19); // d19=true
+
+// うるう年かどうか
+var d20 = moment("2016-02-01").isLeapYear();
+console.log("d20=" + d20); // d20=true
+
+// 月とか曜日とかを和名に
+moment.locale("ja", {
+   months: ["睦月","如月","弥生","卯月","皐月","水無月","文月","葉月","長月","神無月","霜月","師走"],
+   weekdays: ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],
+   weekdaysShort: ["日","月","火","水","木","金","土"],  
+});
+var d21 = moment("2016-02-01").format("MMMM");
+var d22 = moment("2016-02-01").format("dddd");
+var d23 = moment("2016-02-01").format("ddd");
+console.log("d21=" + d21); // d21=如月
+console.log("d22=" + d22); // d22=月曜日
+console.log("d23=" + d23); // d23=月
+</script>
+    </body>
+</html>
